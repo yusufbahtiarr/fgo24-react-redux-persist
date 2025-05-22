@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo, toggleTodo } from "./redux/reducers/todos";
+import { useState } from "react";
+import EditModal from "./EditModal";
 
 function TodoList() {
   const todos = useSelector((state) => state.todos.data);
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const dispatch = useDispatch();
 
   function removeData(id) {
@@ -15,7 +18,7 @@ function TodoList() {
   }
 
   return (
-    <div className="max-w-200 min-h-fit pb-4">
+    <div className="max-w-200 min-h-fit pb-4 relative">
       <ul className="">
         {todos.length === 0 ? (
           <li className="text-gray-500 text-center p-5">Belum ada todo</li>
@@ -47,6 +50,18 @@ function TodoList() {
                   {todo.text}
                 </span>
               </label>
+              <button
+                onClick={() => setSelectedTodo(todo)}
+                className="bg-sky-600 rounded px-3 py-2 w-15 mr-6 font-medium cursor-pointer text-white hover:text-gray-100 hover:bg-sky-500"
+              >
+                EDIT
+              </button>
+              {selectedTodo && (
+                <EditModal
+                  todo={selectedTodo}
+                  closeModal={() => setSelectedTodo(null)}
+                />
+              )}
               <button
                 onClick={() => removeData(todo.id)}
                 className="bg-amber-600 rounded px-3 py-2 w-20 mr-6 font-medium cursor-pointer text-white hover:text-gray-100 hover:bg-amber-500"

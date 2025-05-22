@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { addTodo } from "./redux/reducers/todos";
 import { useDispatch } from "react-redux";
 
 function Input() {
   const dispatch = useDispatch();
+  const [edit, setEdit] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -11,8 +13,10 @@ function Input() {
 
     if (text.trim()) {
       dispatch(addTodo({ text: text }));
+      setEdit(text);
     }
-    e.target.reset();
+    e.target.todo.value = edit;
+    // e.target.reset();
   };
 
   return (

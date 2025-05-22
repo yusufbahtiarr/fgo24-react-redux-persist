@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import TodoPage from "./component/pages/TodoPage";
+import TodoPage from "./pages/TodoPage";
 import { persistor, store } from "./component/redux/store";
 import { Provider } from "react-redux"; // Mengimpor Provider dari react-redux
 import { PersistGate } from "redux-persist/integration/react";
