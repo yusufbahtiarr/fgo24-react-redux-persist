@@ -1,19 +1,18 @@
-import React, { useContext, useState } from "react";
-import { TodoContext } from "./TodoContext"; // Impor dari folder yang sama
+import { addTodo } from "./redux/reducers/todos";
+import { useDispatch } from "react-redux";
 
 function Input() {
-  const { addTodo } = useContext(TodoContext);
-  const [inputText, setInputText] = useState("");
+  const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setInputText(e.target.value);
-  };
+  const handleAdd = (e) => {
+    e.preventDefault();
+    const text = e.target.todo.value;
+    console.log(text);
 
-  const handleAdd = () => {
-    if (inputText.trim()) {
-      addTodo(inputText);
-      setInputText("");
+    if (text.trim()) {
+      dispatch(addTodo({ text: text }));
     }
+    e.target.reset();
   };
 
   return (
@@ -22,20 +21,17 @@ function Input() {
         TODO APP
       </div>
       <div className="flex flex-row gap-4">
-        <input
-          value={inputText}
-          onChange={handleChange}
-          className="w-full border rounded border-gray-400 outline-none px-2 text-slate-800 bg-slate-300"
-          type="text"
-          name="todo"
-          placeholder="Input your todo"
-        />
-        <button
-          onClick={handleAdd}
-          className="py-2 px-4 bg-slate-800 text-white font-medium hover:bg-slate-700 cursor-pointer w-25 rounded flex items-center justify-center"
-        >
-          ADD
-        </button>
+        <form className="flex flex-row gap-4 w-full" onSubmit={handleAdd}>
+          <input
+            className="w-full border rounded border-gray-400 outline-none px-2 text-slate-800 bg-slate-300"
+            type="text"
+            name="todo"
+            placeholder="Input your todo"
+          />
+          <button className="py-2 px-4 bg-slate-800 text-white font-medium hover:bg-slate-700 cursor-pointer w-25 rounded flex items-center justify-center">
+            ADD
+          </button>
+        </form>
       </div>
     </div>
   );

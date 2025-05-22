@@ -1,8 +1,18 @@
-import React, { useContext } from "react";
-import { TodoContext } from "./TodoContext";
+import { useDispatch, useSelector } from "react-redux";
+import { removeTodo, toggleTodo } from "./redux/reducers/todos";
 
 function TodoList() {
-  const { todos, removeTodo, toggleTodo } = useContext(TodoContext);
+  const todos = useSelector((state) => state.todos.data);
+  const dispatch = useDispatch();
+
+  function removeData(id) {
+    dispatch(removeTodo(id));
+    console.log(id);
+  }
+  function toggleData(id) {
+    dispatch(toggleTodo(id));
+    console.log(id);
+  }
 
   return (
     <div className="max-w-200 min-h-fit pb-4">
@@ -24,7 +34,7 @@ function TodoList() {
                   type="checkbox"
                   value={todo.text}
                   checked={todo.completed ?? false}
-                  onChange={() => toggleTodo(todo.id)}
+                  onChange={() => toggleData(todo.id)}
                   className="h-5 w-5 "
                 />{" "}
                 <span
@@ -38,7 +48,7 @@ function TodoList() {
                 </span>
               </label>
               <button
-                onClick={() => removeTodo(todo.id)}
+                onClick={() => removeData(todo.id)}
                 className="bg-amber-600 rounded px-3 py-2 w-20 mr-6 font-medium cursor-pointer text-white hover:text-gray-100 hover:bg-amber-500"
               >
                 DELETE

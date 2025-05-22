@@ -1,6 +1,6 @@
 # React Example Project
 
-This repository contains React project Minitask with React useContext example. This project is about creating a todo list application
+This repository contains React project Minitask with React Redux Persist example. This project is about creating a todo list application
 
 ## Preview
 
@@ -11,13 +11,13 @@ This repository contains React project Minitask with React useContext example. T
 1. Clone this project
 
 ```
-git clone https://github.com/yusufbahtiarr/fgo24-react-medium.git
+git clone https://github.com/yusufbahtiarr/fgo24-react-react-persist.git
 ```
 
 2. Enter the project directory
 
 ```
-cd fgo24-react-medium
+cd fgo24-react-react-persist
 ```
 
 3. Install the Depedencies
