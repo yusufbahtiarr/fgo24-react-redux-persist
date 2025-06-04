@@ -6,6 +6,8 @@ This repository contains React project Minitask with React Redux Persist example
 
 ![Preview](Screenshot.png)
 
+![Preview](Screenshot1.png)
+
 ## How to Run this project
 
 1. Clone this project
