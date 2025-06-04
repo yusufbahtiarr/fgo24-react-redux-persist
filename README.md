@@ -50,13 +50,11 @@ git clone https://github.com/yusufbahtiarr/fgo24-react-react-persist.git
 cd fgo24-react-react-persist
 ```
 
-````
-
 3. Build image
 
 ```bash
 docker build . -t reactpersist:latest
-````
+```
 
 4. Run image with docker
 
@@ -68,13 +66,36 @@ docker run -p 8080:80 -d reactpersist:latest
 
 ## Dependencies
 
-This project using nodejs to run, so make sure to install node on your machine.
+To develop this app, we are using some dependencies:
 
-- live-server: to mock http server in local environtment
+- ReactJS
+- TailwindCSS
+- Redux Toolkit
+- Redux Persist
+- React Hook Form
 
-## How to Contribute
+And frontend tooling, the one and only:
 
-Please open PR to contributed to this project, i will review and merge if its needed.
+- Vite
+
+## Running the app locally
+
+This project is built with Vite, which provides fast development with hot-reloading.
+
+1. Access the app:
+
+   - After starting the dev server, open:
+     🔗 http://localhost:5173
+
+2. Hot Reloading:
+   - Any changes you make will automatically reflect in the browser.
+
+## Contributing rules
+
+- Create a Pull Request (PR) to the branch assigned to you (named after you).
+- Follow these guidelines:
+  - Semantic Commit Messages – Use clear, structured commit messages (e.g., feat: add user login, fix: resolve auth validation bug).
+  - Semantic Branching (for local work) – Prefix your local branches with the commit type (e.g., feat/user-login, fix/auth-validation).
 
 ## License
 
